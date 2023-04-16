@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.addCron = void 0;
+const node_schedule_1 = __importDefault(require("node-schedule"));
+const data_1 = require("./data");
+const child_process_1 = require("child_process");
+const addCron = (call, callback) => {
+    for (const item of call.request.crons) {
+        const { id, schedule, command } = item;
+        data_1.scheduleStacks.set(id, node_schedule_1.default.scheduleJob(id, schedule, async () => {
+            (0, child_process_1.exec)(`ID=${id} ${command}`);
+        }));
+    }
+    callback(null, null);
+};
+exports.addCron = addCron;
+//# sourceMappingURL=addCron.js.map

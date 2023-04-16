@@ -1,0 +1,18 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const grpc_js_1 = require("@grpc/grpc-js");
+const cron_1 = require("../protos/cron");
+const addCron_1 = require("./addCron");
+const delCron_1 = require("./delCron");
+const config_1 = __importDefault(require("../config"));
+const logger_1 = __importDefault(require("../loaders/logger"));
+const server = new grpc_js_1.Server();
+server.addService(cron_1.CronServiceService, { addCron: addCron_1.addCron, delCron: delCron_1.delCron });
+server.bindAsync(`localhost:${config_1.default.cronPort}`, grpc_js_1.ServerCredentials.createInsecure(), () => {
+    server.start();
+    logger_1.default.debug(`✌️ 定时服务启动成功！`);
+});
+//# sourceMappingURL=index.js.map
