@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_whyour_qinglong=self.webpackChunk_whyour_qinglong||[]).push([[9227],{70300:function(e,n,r){r.r(n);var t=r(3038),u=(r(30758),r(22985)),i=r(31616),s=r(58401),h=r(86070),l=s.A.Link;n.default=function(){return(0,h.jsx)(i.Ay,{status:"404",title:"404",extra:(0,h.jsx)(u.A,{type:"primary",children:(0,h.jsx)(l,{href:"/",children:t.Ay.get("返回首页")})})})}}}]);
